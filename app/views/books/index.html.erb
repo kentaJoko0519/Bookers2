@@ -1,2 +1,18 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<!--Home-->
+<h1>New Book</h1>
+  <%= form_with model: @book do |f| %>
+    <h4>Title</h4>
+      <%= f.text_field :title %>
+    <h4>Body</h4>
+      <%= f.text_area :body %>
+    <%= f.submit 'Creat Book' %>
+  <% end %>
+
+<h1>Books</h1>
+<% @books.each do |book| %>
+  <div>
+    <p><%= image_tag 'no_image.jpg' %></p>
+    <p>Title：<%= book.title %></p>
+    <p>Body：<%= book.body %></p>
+  </div>
+<% end %>
