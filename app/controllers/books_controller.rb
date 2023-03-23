@@ -11,8 +11,20 @@ class BooksController < ApplicationController
     @book=Book.new
     @books=Book.all
   end
-
+  
   def show
+    @book=Book.find(params[:id])
+  end
+  
+  def edit
+    @book=Book.find(params[:id])
+  end
+  
+  def destroy
+    book=Book.find(params[:id])
+    book.destroy
+    # リダイレクト先仮置き
+    redirect_to books_path
   end
 
     private
