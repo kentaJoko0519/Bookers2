@@ -18,6 +18,7 @@
 <% @books.each do |book| %>
   <div>
     <p><%= image_tag 'no_image.jpg' %></p>
+    <p>name  <%= current_user.name %></p>
     <p>Title：
       <%= link_to book_path(book.id) do %>
         <%= book.title %>
