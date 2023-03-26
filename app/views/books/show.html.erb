@@ -22,7 +22,7 @@
   <p><%= link_to @book.title, book_path(@book.id) %></p>
   <p><%= @book.body %></p>
   <% if @book.user == current_user %>
-    <%= button_to "Edit", edit_book_path(@book.id) %>
+    <%= button_to "Edit", edit_book_path(@book.id), method: :get %>
   <% end %>
   <% if @book.user == current_user %>
     <%= button_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" %>
