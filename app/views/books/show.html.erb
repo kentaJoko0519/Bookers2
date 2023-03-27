@@ -1,9 +1,14 @@
 <!--Book detail-->
+
+<div>
+  <%= flash[:notice1] %>
+</div>
+
 <h1>User info</h1>
     <p><%= image_tag current_user.get_profile_image(100,100) %></p>
     <p>name  <%= current_user.name %></p>
     <p>introduction <%= current_user.introduction %></p>
-    <p><%= button_to "Edit", edit_user_path(@user.id) %></p>
+    <p><%= link_to "Edit", edit_user_path(@user.id) %></p>
 
 
 <h1>New Book</h1>
@@ -17,7 +22,11 @@
 
 <h1>Book detail</h1>
 <div>
-  <p><%= image_tag @user.get_profile_image(100,100) %></p>
+  <p>
+    <%= link_to user_path(@user.id) do %>
+      <%= image_tag @book.user.get_profile_image(100,100) %>
+    <% end %>
+  </p>
   <p><%= link_to @user.name, user_path(@user.id) %></p>
   <p><%= link_to @book.title, book_path(@book.id) %></p>
   <p><%= @book.body %></p>

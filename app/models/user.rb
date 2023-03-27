@@ -3,9 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
+    validates :name, presence: true, length: {minimum: 2 }
+
     has_many :books, dependent: :destroy
-    
+
     has_one_attached :profile_image
 
   def get_profile_image(width, height)
@@ -14,6 +16,6 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
-  end  
+  end
 
 end

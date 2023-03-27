@@ -1,9 +1,10 @@
 <!--UsersからのBook detail-->
+
 <h1>User info</h1>
     <p><%= image_tag current_user.get_profile_image(100,100) %></p>
     <p>name  <%= current_user.name %></p>
     <p>introduction <%= @user.introduction %></p>
-    <p><%= button_to "Edit", edit_user_path(@user.id), method: :get %></p>
+    <p><%= link_to "Edit", edit_user_path(@user.id) %></p>
 
 
 <h1>New Book</h1>
@@ -18,7 +19,11 @@
 <h1>Books</h1>
 <% @books.each do |book| %>
   <div>
-    <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+    <p>
+      <%= link_to user_path(@users.id) do %>
+        <%= image_tag book.user.get_profile_image(100,100) %>
+      <% end %>
+    </p>
     <p><%= @users.name %></p>
     <p>Title：
       <%= link_to book_path(book.id) do %>
