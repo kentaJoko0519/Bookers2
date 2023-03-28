@@ -1,30 +1,32 @@
 <!--Users-->
 <div class="container px-5 px-sm-0">
   <div class="row">
-<!--koko-->
-    <%= render 'books/list', book: @book, user: @user %>
-<!--made-->
-      <div class="col-md-8 offset-md-1">
-        <h1>Users</h1>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>image</th>
-              <th>name</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <% @users.each do |user| %>
+
+    <%= render 'books/list', book: @book, user: @user %><!--部分テンプレート-->
+
+    <div class="col-md-8 offset-md-1">
+    <h1>Users</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
           <tbody>
             <tr>
-              <td>image <%= image_tag user.get_profile_image(100,100) %></td>
+              <td><%= image_tag user.get_profile_image(100,100) %></td>
               <td><%= user.name %></td>
               <td><%= link_to "Show", user_path(user.id) %></td>
             </tr>
           </tbody>
-          <% end %>
-        </table>
-
+        <% end %>
+      </table>
+    </div>    
+  </div>
+</div>  
 
 
 

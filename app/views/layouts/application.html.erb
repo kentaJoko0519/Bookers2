@@ -11,7 +11,7 @@
   </head>
 
   <body>
-
+    <!--Header-->
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -21,6 +21,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+              <!--ログイン中のHeader-->
               <% if user_signed_in? %>
                 <li class="">
                   <%= link_to user_path(current_user), class: "nav-link text-light" do %>
@@ -42,6 +43,7 @@
                     <i class="fas fa-sign-out-alt"></i>Log out
                   <% end %>
                 </li>
+              <!--ログアウト中のHeader-->
               <% else %>
                 <li class="">
                   <%= link_to root_path, class: "nav-link text-light" do %>
@@ -69,10 +71,17 @@
         </div>
       </nav>
     </header>
+
+    <!--フラッシュメッセージ-->
     <%= flash[:notice] %>
+    <p id="notice"><%= flash[:notice1] %></p>
 
-    <%= yield %>
+    <!--Main-->
+    <main>
+      <%= yield %>
+    </main>
 
+    <!--Footer-->
     <footer>
       <div class="container mt-5">
       	<div class="row">
