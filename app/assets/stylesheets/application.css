@@ -14,4 +14,49 @@
  *= require_self
  */
  
- 
+ .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529
+}
+
+.table td,.table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6
+}
+
+.table tbody+tbody {
+    border-top: 2px solid #dee2e6
+}
+
+.table-sm td,.table-sm th {
+    padding: .3rem
+}
+
+.table-bordered,.table-bordered td,.table-bordered th {
+    border: 1px solid #dee2e6
+}
+
+.table-bordered thead td,.table-bordered thead th {
+    border-bottom-width: 2px
+}
+
+.table-borderless tbody+tbody,.table-borderless td,.table-borderless th,.table-borderless thead th {
+    border: 0
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05)
+}
+
+.table-hover tbody tr:hover {
+    color: #212529;
+    background-color: rgba(0,0,0,.075)
+}
+

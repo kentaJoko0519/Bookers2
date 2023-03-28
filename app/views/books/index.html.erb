@@ -1,43 +1,34 @@
 <!--Home-->
-
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<div>
-  <%= flash[:notice] %>
-</div>
-
-<h1>User info</h1>
-    <p><%= image_tag current_user.get_profile_image(100,100) %></p>
-    <p>name  <%= current_user.name %></p>
-    <p>introduction <%= current_user.introduction%></p>
-    <p><%= link_to "Edit", edit_user_path(@user.id) %></p>
-
-
-<h1>New Book</h1>
-  <%= form_with model: @book do |f| %>
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %>
-    <%= f.submit 'Creat Book' %>
-  <% end %>
-
-<h1>Books</h1>
-<% @books.each do |book| %>
-  <div>
-    <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-    <p>Title：
-      <%= link_to book_path(book.id) do %>
-        <%= book.title %>
-      <% end %>
-    </p>
-    <p>Opinion：<%= book.body %></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+<!--koko-->
+    <%= render 'list', book: @book, user: @user %>
+<!--made-->
+    <div class="col-md-8 offset-md-1">
+      <h1>Books</h1>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <% @books.each do |book| %>
+        <tbody>
+          <tr>
+            <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+            <td>
+              <%= link_to book_path(book.id) do %>
+                <%= book.title %>
+              <% end %>
+            </td>
+            <td><%= book.body %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
   </div>
-<% end %>
+</div>
